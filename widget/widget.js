@@ -49,3 +49,8 @@ function draw() {
 function buttonGeklikt() {
   window.alert("button geklikt");
 }
+
+
+//window.preload = preload;
+window.setup = setup;
+window.draw = draw;
