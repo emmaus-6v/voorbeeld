@@ -3,7 +3,7 @@ import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gsta
 import { getDatabase, ref, set, onValue, child, get, push, update } from "firebase/database } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js"
 
 let userID;
-let teamNaam = "testTeam";
+let callBackFn;
 let lastStartedGameRef;
 
 const firebaseConfig = {
@@ -42,9 +42,13 @@ onAuthStateChanged(authentication, (user) => {
   }
 });
 
-export function testWrite(getal) {
+export function writeToDB(team, object) {
   const db = getDatabase();
-  update(ref(db, 'teams/' + teamNaam), {
-    getal: getal
-  });
+  update(ref(db, 'teams/' + team), object);
 }
+
+export function listenForUpdates(team, callbackFn) {
+  const db = getDatabase();
+  onValue(ref(db, 'teams/' + team), callbackFn);
+}
+
