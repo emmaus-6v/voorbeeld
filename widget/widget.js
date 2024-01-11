@@ -1,3 +1,4 @@
+import {writeToDB, listenForUpdates} from "./firebasecode.js"
 
 // globale variabelen
 var button;
@@ -21,6 +22,8 @@ function setup() {
   button = createButton(/* #TODO geef de button een eigen naam*/);
   button.position(/* #TODO geef de button een eigen positie*/);
   button.mouseClicked(buttonGeklikt);
+
+  listenForUpdates("team everest", handleUpdate);
 }
 
 
@@ -48,6 +51,15 @@ function draw() {
 
 function buttonGeklikt() {
   window.alert("button geklikt");
+
+  writeToDB("team everest", {supergetal: 9});
+}
+
+function handleUpdates(snapshot) {
+  const data = snapshot.val()
+
+  // print de nieuwe waarden
+  console.log(data);
 }
 
 
