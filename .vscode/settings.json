@@ -1,0 +1,10 @@
+{
+    "git.useEditorAsCommitInput": false,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.rebaseWhenSync": false,
+    "git.postCommitCommand": "sync",
+    "git.mergeEditor": true,
+    "git.autofetch": true,
+    "git.autofetchPeriod": 60
+}
