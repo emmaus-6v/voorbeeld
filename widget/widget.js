@@ -52,10 +52,10 @@ function draw() {
 function buttonGeklikt() {
   window.alert("button geklikt");
 
-  writeToDB("team everest", {supergetal: 9});
+  writeToDB("team everest", {snelheid: "beetje snel"});
 }
 
-function handleUpdates(snapshot) {
+function handleUpdate(snapshot) {
   const data = snapshot.val()
 
   // print de nieuwe waarden

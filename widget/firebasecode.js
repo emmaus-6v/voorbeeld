@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
-import { getDatabase, ref, set, onValue, child, get, push, update } from "firebase/database } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js"
+import { getDatabase, ref, set, onValue, child, get, push, update } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js"
 
 let userID;
 let callBackFn;
@@ -17,7 +17,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getDatabase();
 
 const auth = getAuth();
 signInAnonymously(auth)
