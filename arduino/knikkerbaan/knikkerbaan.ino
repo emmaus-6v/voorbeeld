@@ -1,6 +1,9 @@
 #include "src/Teller.cpp"
+#include "src/WiFiNINA/WiFiNINA.h"
 
-const int TELLER_A_PIN = 5;             // pin waarop IR-sensor voor Teller A is aangesloten
+int status = WL_IDLE_STATUS;
+
+const int TELLER_A_PIN = 5;  // pin waarop IR-sensor voor Teller A is aangesloten
 
 unsigned long laatsteTellerPrintTijd = 0;
 const int TELLERPRINTINTERVAL = 1000;  // 1000 milliseconden
@@ -9,6 +12,28 @@ Teller tellerA = Teller(TELLER_A_PIN);
 
 void setup() {
   Serial.begin(9600);
+
+  // check for the WiFi module:
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+    // don't continue
+    while (true)
+      ;
+  }
+
+  while (status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    status = WiFi.begin("knikkerbaan", "roodblauwgeelwit");
+
+    // wait 5 seconds for connection:
+    delay(5000);
+  }
+
+  Serial.println("Connected to WiFi");
+
+  
 }
 
 
@@ -25,5 +50,4 @@ void loop() {
     // werd in op 'nu'
     laatsteTellerPrintTijd = millis();
   }
-
 }
