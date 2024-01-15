@@ -23,7 +23,6 @@ void setup() {
 
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
-    Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin("knikkerbaan", "roodblauwgeelwit");
 
